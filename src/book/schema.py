@@ -1,13 +1,17 @@
 from pydantic import BaseModel
 from typing import Optional
+import uuid
+from datetime import datetime
 
 class Book(BaseModel):
-    id: int
+    uid: uuid.UUID
     title: str
     author: str
     price: int
     publication: str
     language: str
+    created_at: datetime
+    updated_at: datetime
 
 class BookCreationPayload(BaseModel):
     title: str
