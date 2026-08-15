@@ -18,9 +18,9 @@ class User(SQLModel, table=True):
 
     fname: str = Field(max_length=16, nullable=True)
     lname: str = Field(max_length=16, nullable=True)
-    username: str = Field(max_length=20, unique=True)
-    email: str
-    password_hash: str
+    role: str = Field(max_length=10, default="user")
+    email: str = Field(max_length=255, nullable=False, unique=True)
+    password_hash: str = Field(max_length=128, nullable=False, exclude=True)
 
     created_at: datetime = Field(
         sa_column=Column(

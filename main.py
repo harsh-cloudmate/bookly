@@ -1,6 +1,7 @@
 from fastapi import FastAPI, status
 from pydantic import BaseModel
 from src.book import book_router
+from src.auth.routes import auth_router
 
 app = FastAPI(
     version="1.0",
@@ -28,3 +29,4 @@ def health_check() -> HealthCheckResponse:
     }
 
 app.include_router(book_router, prefix="/books", tags=["books"])
+app.include_router(auth_router, prefix="/auth", tags=["auth"])
